@@ -1,0 +1,10 @@
+[
+    {
+        "model": "nashville_sell_and_trade_api.SavePost",
+        "pk": 1,
+        "fields": {
+            "product": 1,
+            "nash_user": 1
+        }
+    }
+]
