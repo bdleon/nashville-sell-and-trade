@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
+from nashville_sell_and_trade_api.views import register_user, login_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register',register_user),
+    path('login', login_user),
+    path('api-auth', include('rest_framework.urls', namespace='rest_framework'))
+    
+    
 ]
