@@ -1,0 +1,18 @@
+[
+    {
+        "model": "nashville_sell_and_trade_api.Product",
+        "pk": 1,
+        "fields": {
+            "title": "watermelon",
+            "description": "home grown watermelon. ",
+            "categories":[1],
+            "price": 3,
+            "image":"",
+            "trade": true,
+            "quantity":7,
+            "nash_user":1,
+            "date_posted":"2021-11-29"
+
+        }
+    }
+]

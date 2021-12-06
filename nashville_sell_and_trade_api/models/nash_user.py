@@ -7,4 +7,4 @@ class NashUser(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.CharField(max_length=150)
-    picture = models.CharField(max_length=150)
+    picture = models.CharField(max_length=300)

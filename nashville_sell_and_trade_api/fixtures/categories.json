@@ -1,0 +1,26 @@
+[
+    {
+        "model": "nashville_sell_and_trade_api.Category",
+        "pk": 1,
+        "fields": {
+            "label":"produce"
+            
+        }
+    },
+    {
+        "model": "nashville_sell_and_trade_api.Category",
+        "pk": 2,
+        "fields": {
+            "label":"tech"
+            
+        }
+    },
+    {
+        "model": "nashville_sell_and_trade_api.Category",
+        "pk": 3,
+        "fields": {
+            "label":"furniture"
+            
+        }
+    }
+]
