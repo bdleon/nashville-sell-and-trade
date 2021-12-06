@@ -1,5 +1,16 @@
 {
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.linting.pylintArgs": [ "--load-plugins=pylint_django", "--django-settings-module=nashville_sell_and_trade.settings" ]
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--django-settings-module=nashville_sell_and_trade.settings"
+    ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "Nashville S and T DB",
+            "database": "db.sqlite3"
+        }
+    ]
 }
