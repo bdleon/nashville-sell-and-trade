@@ -5,6 +5,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
+from rest_framework.decorators import action
 
 from nashville_sell_and_trade_api.models import Product, NashUser, Category, category, nash_user, product
 
@@ -34,11 +35,14 @@ class ProductView(ViewSet):
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request):
+        
         products = Product.objects.all()
         categories = request.GET.getlist('category')
-        if len(categories)  != 0:
+
+        if len(categories) != 0:
             for category in categories:
-                products = products.filter(categories__id=category).distinct() 
+                products = products.filter(categories__id=category).distinct()
+
         serializer = ProductSerializer(
             products, many=True, context={'request': request})
         return Response(serializer.data)
@@ -54,24 +58,24 @@ class ProductView(ViewSet):
 
         except Exception as ex:
             return HttpResponseServerError(ex)
+
     def update(self, request, pk=None):
-        nash_user= NashUser.objects.get(user=request.auth.user)
-        
+
+        nash_user = NashUser.objects.get(user=request.auth.user)
+
         product = Product.objects.get(pk=pk)
-        product.title=request.data['title']
-        product.description=request.data["description"]
-        product.trade=request.data["trade"]
-        product.price=request.data["price"]
-        product.image=request.data["image"]
-        product.quantity=request.data["quantity"]
-        product.nash_user=nash_user
-        product.categories.set(request.data['categories'])
+        product.title = request.data['title']
+        product.description = request.data["description"]
+        product.trade = request.data["trade"]
+        product.price = request.data["price"]
+        product.image = request.data["image"]
+        product.quantity = request.data["quantity"]
+        product.nash_user = nash_user
+        
         product.save()
-        
+
         return Response({}, status=status.HTTP_204_NO_CONTENT)
-        
-        
-        
+
     def destroy(self, request, pk=None):
 
         try:
@@ -85,7 +89,15 @@ class ProductView(ViewSet):
         except Exception as ex:
             return Response({"message": ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    @action(methods=["get"], detail=False)
+    def my_products(self, request):
+        nash_user = NashUser.objects.get(user=request.auth.user)
 
+        products = Product.objects.filter(nash_user_id=nash_user.id)
+        serializer = ProductSerializer(
+            products, many=True, context={'request': request})
+        return Response(serializer.data)
+    
 class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
