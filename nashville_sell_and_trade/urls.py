@@ -20,12 +20,14 @@ from django.conf.urls import include
 from rest_framework import routers
 from nashville_sell_and_trade_api.views import ProductView, CategoryView
 from nashville_sell_and_trade_api.views import register_user, login_user
+from nashville_sell_and_trade_api.views.message import MessageView
 
 
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'products', ProductView,'product')
 router.register(r'categories', CategoryView, 'category')
+router.register(r'messages', MessageView, 'message')
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
