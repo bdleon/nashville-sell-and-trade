@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nashvilleSellAndTrade.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'nashville_sell_and_trade.settings')
 
 application = get_wsgi_application()
