@@ -1,0 +1,1 @@
+web: gunicorn nashville_sell_and_trade.wsgi --log-file -
