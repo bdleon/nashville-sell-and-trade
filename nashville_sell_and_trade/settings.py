@@ -57,7 +57,7 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://nash-sell-and-trade-client.herokuapp.com/'
+    'https://nash-sell-and-trade-client.herokuapp.com'
 )
 
 
