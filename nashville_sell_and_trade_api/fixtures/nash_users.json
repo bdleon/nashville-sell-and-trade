@@ -1,7 +1,7 @@
 [
     {
         "model": "nashville_sell_and_trade_api.NashUser",
-        "pk": 1,
+        "pk": 1, 
         "fields": {
             "user": 1,
             "bio": "Me",
